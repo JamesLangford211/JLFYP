@@ -3,6 +3,7 @@ package finalYearProject;
 /**
 * Class to represent the connection between two nodes in a flowchart.
 * 
+* 
 *
 * @author  James Langford
 * @version 1.0
@@ -13,6 +14,8 @@ public class Edge {
 	public Node source;
 	public Node destination;
 	
+	
+	//comment here
 	public Edge (Node source, Node destination){
 		this.source = source;
 		this.destination = destination;
