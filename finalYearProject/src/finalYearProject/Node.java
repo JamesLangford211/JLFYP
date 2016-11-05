@@ -16,10 +16,13 @@ import java.util.UUID;
 	 // Reference to the next node in the chain, null if it doesn't exist.
 	 Node next;
 	
-	 // Object carried by this node object
+	 // Object carried by this node object.
 	 Object data;
 	 
+	 // A random UUID converted to a string, assures each node has it's own identity.
 	 String uniqueID;
+	 
+	 // Readable version of uniqueID.
 	 String testID;
 	 
 	 /**

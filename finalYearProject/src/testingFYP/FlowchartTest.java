@@ -24,14 +24,18 @@ public class FlowchartTest {
 	@Before
 	public void setUp(){
 		
+		//instantiate a flowchart object
 		fc = new Flowchart();
-		Move m1 = new Move(4);
+		
+		// Create a few objects to store on my nodes
+		//Move m1 = new Move(4);
 		Move m2 = new Move(2);
 		Move m3 = new Move(1);
 		Move m4 = new Move(3);
 		Move m5 = new Move(4);
 		
-		Node n1 = new Node(m1);
+		
+		Node n1 = new Node(new Move(2));
 		IDs.add(n1.toString());
 		Node n2 = new Node(m2);
 		IDs.add(n2.toString());
