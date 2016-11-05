@@ -28,16 +28,17 @@ public class FlowchartTest {
 		fc = new Flowchart();
 		
 		// Create a few objects to store on my nodes
-		//Move m1 = new Move(4);
+		Move m1 = new Move(4);
 		Move m2 = new Move(2);
 		Move m3 = new Move(1);
 		Move m4 = new Move(3);
 		Move m5 = new Move(4);
 		
-		
-		Node n1 = new Node(new Move(2));
-		IDs.add(n1.toString());
-		Node n2 = new Node(m2);
+		// Adds the object to the node, this could be done in one line per node, but I separated
+		// them for clarity.
+		Node n1 = new Node(m1);
+		IDs.add(n1.toString()); // I also retrieve the ID and put them into a list so I
+		Node n2 = new Node(m2); // can check later that things are being moved properly.
 		IDs.add(n2.toString());
 		Node n3 = new Node(m3);
 		IDs.add(n3.toString());
@@ -46,6 +47,7 @@ public class FlowchartTest {
 		Node n5 = new Node(m5);
 		IDs.add(n5.toString());
 		
+		// Add the created nodes to the flowchart data structure.
 		fc.add(n1);
 		fc.add(n2);
 		fc.add(n3);
@@ -58,10 +60,11 @@ public class FlowchartTest {
 	 */
 	@Test
 	public void testFlowchartInit(){
-		assertEquals(5,fc.size());
+		assertEquals(5,fc.size()); // I have added 5 nodes, so ensure the size of the flowchart is 5.
 		
 		for(int i = 0; i<fc.size(); i++){
-			assertEquals(IDs.get(i), fc.get(i).toString());
+			// Compare the order of the IDs in the flowchart to what was stored earlier.
+			assertEquals(IDs.get(i), fc.get(i).toString()); 
 		}
 	}
 	
