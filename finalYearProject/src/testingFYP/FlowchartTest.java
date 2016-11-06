@@ -36,16 +36,16 @@ public class FlowchartTest {
 		
 		// Adds the object to the node, this could be done in one line per node, but I separated
 		// them for clarity.
-		Node n1 = new Node(m1);
-		IDs.add(n1.toString()); // I also retrieve the ID and put them into a list so I
-		Node n2 = new Node(m2); // can check later that things are being moved properly.
-		IDs.add(n2.toString());
-		Node n3 = new Node(m3);
-		IDs.add(n3.toString());
-		Node n4 = new Node(m4);
-		IDs.add(n4.toString());
-		Node n5 = new Node(m5);
-		IDs.add(n5.toString());
+		Node n1 = new Node(m1, null);
+		IDs.add(n1.getUID()); // I also retrieve the ID and put them into a list so I
+		Node n2 = new Node(m2,n1); // can check later that things are being moved properly.
+		IDs.add(n2.getUID());
+		Node n3 = new Node(m3,n2);
+		IDs.add(n3.getUID());
+		Node n4 = new Node(m4,n3);
+		IDs.add(n4.getUID());
+		Node n5 = new Node(m5,n4);
+		IDs.add(n5.getUID());
 		
 		// Add the created nodes to the flowchart data structure.
 		fc.add(n1);
@@ -60,11 +60,11 @@ public class FlowchartTest {
 	 */
 	@Test
 	public void testFlowchartInit(){
-		assertEquals(5,fc.size()); // I have added 5 nodes, so ensure the size of the flowchart is 5.
+		assertEquals(5,fc.size()); // I have added 5 nodes, so ensure the size of the flowchart is 5 + the edges connecting them: 
 		
 		for(int i = 0; i<fc.size(); i++){
 			// Compare the order of the IDs in the flowchart to what was stored earlier.
-			assertEquals(IDs.get(i), fc.get(i).toString()); 
+			assertEquals(IDs.get(i), ((Node) fc.get(i)).getUID()); 
 		}
 	}
 	
@@ -74,7 +74,7 @@ public class FlowchartTest {
 	@Test
 	public void testAddingNode(){
 		Move m6 = new Move(2);
-		Node n6 = new Node(m6);
+		Node n6 = new Node(m6,fc.getEnd());
 		fc.add(n6);
 		assertEquals(6,fc.size());
 	}
@@ -85,12 +85,12 @@ public class FlowchartTest {
 	@Test
 	public void testAddingSpecificNode(){
 		Move m6 = new Move(2);
-		Node n6 = new Node(m6);
+		Node n6 = new Node(m6,null);
 		fc.add(n6,3);
-		String expected = n6.toString();
+		String expected = n6.getUID();
 		
 		assertEquals(6,fc.size());
-		assertEquals(expected, fc.get(3).toString());
+		assertEquals(expected, ((Node) fc.get(3)).getUID());
 	}
 
 	/**

@@ -11,7 +11,6 @@ import java.util.UUID;
 * @since   02-11-2016 
 */
 
-
  public class Node {
 	 // Reference to the next node in the chain, null if it doesn't exist.
 	 Node next;
@@ -25,15 +24,22 @@ import java.util.UUID;
 	 // Readable version of uniqueID.
 	 String testID;
 	 
-	 /**
+	 // Make the nodes doubly linked, this is just a test for now
+	 Node previous;
+	 
+	 // Create edge object
+	 Edge edge;
+
+	/**
 	   * Constructor for the node object if the next value is not known.
 	   * @param value the object this node will carry.
 	   */
 	 public Node(Object value){
-		 next = null;
+		 edge = new Edge(this,null);
 		 data = value;
 		 uniqueID = UUID.randomUUID().toString();
 		 testID = uniqueID.substring(0,5);
+		 
 	 }
 	 
 	 /**
@@ -43,7 +49,7 @@ import java.util.UUID;
 	   */
 	 public Node(Object value, Node nextNode){
 		 data = value;
-		 next = nextNode;
+		 edge = new Edge(this,nextNode);
 	 }
 	 
 	 /**
@@ -67,7 +73,7 @@ import java.util.UUID;
 	   * @return next Returns the next node in the data structure that comes after this one.
 	   */
 	 public Node getNext(){
-		 return next;
+		 return edge.getDestination();
 	 }
 	 
 	 /**
@@ -75,14 +81,14 @@ import java.util.UUID;
 	   * @param nextNode the node to set to be the next.
 	   */
 	 public void setNext(Node nextNode){
-		 next = nextNode;
+		 edge.setDestination(nextNode);
 	 }
 	 
 	 /**
 	   * Returns the String version of the UUID (This is not very human readable).
 	   * @return uniqueID the UUID.
 	   */
-	 public String toString(){
+	 public String getUID(){
 		 return uniqueID;
 	 }
 	 
@@ -93,4 +99,30 @@ import java.util.UUID;
 	 public String readableID(){
 		 return testID;
 	 }
+	 
+	 public String toString(){
+		 String output = 
+				 	"\n **********" +
+			 		"\n Node ID: " + readableID() + 
+			 		"\n Type: " + this.getClass().getName() + 
+					". \n Previous: " + getPrevious().readableID();
+		 if(getNext() != null){
+			 output += ". \n Next: " + getNext().readableID();
+		 }
+		 output += "\n **********";
+		 return output;
+	 }
+	 
+	 public Node getPrevious() {
+		return edge.getSource();
+	}
+
+	public void setPrevious(Node previous) {
+		this.previous = previous;
+		edge.setSource(previous);
+	}
+	
+	public Edge getEdge(){
+		return edge;
+	}
 }

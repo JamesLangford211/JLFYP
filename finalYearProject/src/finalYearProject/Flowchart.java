@@ -12,6 +12,7 @@ package finalYearProject;
 public class Flowchart {
 	private static int counter;
 	private Node head;
+	public Node end;
 	
 	// Constructor
 	public Flowchart(){
@@ -22,19 +23,22 @@ public class Flowchart {
 	// Appends the element to the end of this list.
 	public void add(Object data){
 		if(head == null){
-			head = new Node(data);
+			head = new Node(data, null);
 		}
 		
-		Node temp = new Node(data);
+		
 		Node current = head;
+		Node temp = new Node(data);
 		
 		// Check for a null pointer exception
 		if(current != null){
 			// Iterate to the end of the list and append
-			while (current.getNext() != null){
+			while (current.getNext() != null){				
 				current = current.getNext();
 			}
-			current.setNext(temp);
+			
+		temp.setPrevious(current);
+		current.setNext(temp);
 		}
 		incrementCounter();
 	}
@@ -53,8 +57,9 @@ public class Flowchart {
 	
 	//insert into specified location
 	public void add(Object data, int index){
-		Node temp = new Node(data);
+		
 		Node current = head;
+		Node temp = new Node(data);
 		
 		if(current != null){
 			//iterate to requested index
@@ -64,10 +69,12 @@ public class Flowchart {
 		}
 		
 		// set temps next node to be this nodes next
-		temp.setNext(current.getNext());
+		temp.setNext(current.getNext());	
+		temp.setPrevious(current);
 		
 		//this nodes next node will be the new node
 		current.setNext(temp);
+		current.setPrevious(current.getPrevious());
 		
 		// increment number of elements
 		incrementCounter();
@@ -127,14 +134,28 @@ public class Flowchart {
 		if (head != null) {
 			Node current = head.getNext();
 			while (current != null) {
-				output += "[" + current.getData().toString() + "]";
+				output += current.toString();
+				System.out.println();
 				current = current.getNext();
 			}
  
 		}
 		return output;
 	}
+	
+	public Node getEnd(){
+		Node current = head;		
+		// Check for a null pointer exception
+		if(current != null){
+			// Iterate to the end of the list and append
+			while (current.getNext() != null){				
+				current = current.getNext();
+			}
+		}
+		return current;
+	}
+}
 		
 		
 	
-}
+

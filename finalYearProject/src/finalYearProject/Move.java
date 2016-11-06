@@ -1,6 +1,7 @@
 package finalYearProject;
 
 public class Move{
+	
 	public int direction;
 	
 	/*

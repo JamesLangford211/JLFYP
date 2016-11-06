@@ -27,6 +27,10 @@ public class Edge {
 		this.destination = destination;
 	}
 	
+	public String getAnnotation(){
+		return annotation;
+	}
+	
 	/**
 	 * Method to add content to the string field of this object if necessary.
 	 * @param annotation the string value to hold the text representation of this line
@@ -34,5 +38,21 @@ public class Edge {
 	public void setAnnotation(String annotation){
 		this.annotation = annotation;
 	}
+	
+	public Node getSource(){
+		return source;
+	}
+	
+	public void setSource(Node source){
+		this.source = source;
+	}
+	public Node getDestination(){
+		return destination;
+	}
+	
+	public void setDestination(Node destination){
+		this.destination = destination;
+	}
+	
 
 }
