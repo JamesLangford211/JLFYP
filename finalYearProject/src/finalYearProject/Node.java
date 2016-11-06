@@ -12,8 +12,7 @@ import java.util.UUID;
 */
 
  public class Node {
-	 // Reference to the next node in the chain, null if it doesn't exist.
-	 Node next;
+
 	
 	 // Object carried by this node object.
 	 Object data;
@@ -23,10 +22,7 @@ import java.util.UUID;
 	 
 	 // Readable version of uniqueID.
 	 String testID;
-	 
-	 // Make the nodes doubly linked, this is just a test for now
-	 Node previous;
-	 
+ 
 	 // Create edge object
 	 Edge edge;
 
@@ -118,7 +114,6 @@ import java.util.UUID;
 	}
 
 	public void setPrevious(Node previous) {
-		this.previous = previous;
 		edge.setSource(previous);
 	}
 	
