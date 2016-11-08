@@ -7,12 +7,14 @@ import java.awt.Graphics;
 import java.awt.HeadlessException;
 import java.awt.Point;
 import java.awt.Toolkit;
+import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 
 public class FlowchartUI extends JFrame{
+	Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 	
 	public FlowchartUI(Flowchart fc) throws HeadlessException{
-		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		
 		int width = screenSize.width/2;
 		int height = (int)Math.round(screenSize.height * 0.8);
 		setSize(width , height );
@@ -25,19 +27,20 @@ public class FlowchartUI extends JFrame{
 }
 
 	class DrawArea extends JPanel{
-		Point A = null;
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		Flowchart fc;
 		public DrawArea(Flowchart fc){
-			ArrayList<Node> nodes = new ArrayList<Node>();
-			for(int i = 0; i<fc.size();i++){
-				
-			}
-			A = new Point(20,20);
+			this.fc = fc;
 			
 		}
 		
 		@Override
 		protected void paintComponent(Graphics g){
-			g.drawRect(A.x, A.y, 50, 50);
+			for(int i = 0; i<fc.size(); i++){
+				if(i == 0){
+					Point p = new Point((int)Math.round((screenSize.width/2)),20);
+				}
+			}
 		}
 	}
 	

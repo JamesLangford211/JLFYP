@@ -25,6 +25,12 @@ import java.util.UUID;
  
 	 // Create edge object
 	 Edge edge;
+	 
+	 // Used to store the x value of this when displayed
+	 int x;
+	 
+	 // Used to store the y value of this when displayed
+	 int y;
 
 	/**
 	   * Constructor for the node object if the next value is not known.
@@ -119,5 +125,20 @@ import java.util.UUID;
 	
 	public Edge getEdge(){
 		return edge;
+	}
+	
+	public int getX(){
+		return x;
+	}
+	
+	public void setX(int set){
+		x = set;
+	}
+	public int getY(){
+		return y;
+	}
+	
+	public void setY(int set){
+		y = set;
 	}
 }
