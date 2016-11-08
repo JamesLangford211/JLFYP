@@ -31,6 +31,7 @@ public class FlowchartUI extends JFrame{
 			for(int i = 0; i<fc.size();i++){
 				
 			}
+			A = new Point(20,20);
 			
 		}
 		
