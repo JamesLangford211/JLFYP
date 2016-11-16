@@ -2,8 +2,10 @@ package finalYearProject;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.HeadlessException;
 import java.awt.Point;
 import java.awt.Toolkit;
@@ -36,10 +38,27 @@ public class FlowchartUI extends JFrame{
 		
 		@Override
 		protected void paintComponent(Graphics g){
+			super.paintComponent(g);
 			for(int i = 0; i<fc.size(); i++){
 				if(i == 0){
-					Point p = new Point((int)Math.round((screenSize.width/2)),20);
+					Node n = (Node)fc.get(i);
+					n.setX(screenSize.width/2);
+					n.setY(20);
+					Point p = new Point(n.getX(), n.getY());
+					//System.out.println(n.getUID() + "\n" + n.getY());
+					g.setColor(new Color(144,195,212));
+					g.fillRect(p.x, p.y, 200, 100);
 				}
+				
+				else {
+				Node n = (Node)fc.get(i);
+				n.setX(n.getPrevious().getX());
+				n.setY((n.getPrevious().getY() + 20));
+				Point p = new Point(n.getX(), n.getY());
+				g.setColor(new Color(144,195,212));
+				g.fillRect(p.x, p.y, 200, 100);
+				}
+				
 			}
 		}
 	}

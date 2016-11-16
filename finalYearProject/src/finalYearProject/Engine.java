@@ -4,12 +4,12 @@ public class Engine {
 
 	public static void main(String[] args) {
 
-		FlowchartUI flowchartUI = new FlowchartUI(createTestFC());
-		
+		//FlowchartUI flowchartUI = new FlowchartUI(createTestFC());
+		createTestFC();
 
 	}
 	
-	public static Flowchart createTestFC(){
+	public static void createTestFC(){
 		Flowchart fc = new Flowchart();
 		
 		// Create a few objects to store on my nodes
@@ -26,7 +26,7 @@ public class Engine {
 		fc.add(n2);
 		fc.add(n3);
 		
-		return fc;
+		System.out.println(fc.toString());
 	}
 
 }
